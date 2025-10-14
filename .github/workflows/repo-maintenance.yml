@@ -11,9 +11,9 @@ jobs:
   stale:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Mark stale issues
-        uses: actions/stale@v9
+        uses: actions/stale@v10
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           days-before-stale: 60
@@ -22,8 +22,8 @@ jobs:
   labeler:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Apply labels
-        uses: actions/labeler@v5
+        uses: actions/labeler@v6
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
