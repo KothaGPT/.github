@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Auto-merge PR
-        uses: pascalgn/automerge-action@v0.15.3
+        uses: pascalgn/automerge-action@v0.16.4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
       # Notes: ensure branch protection allows auto-merge and that required status checks match.
