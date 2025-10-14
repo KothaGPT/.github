@@ -2,16 +2,28 @@ name: Repo maintenance
 on:
   schedule:
     - cron: '0 6 * * 1' # weekly on Monday
+  issues:
+    types: [opened]
+  pull_request_target:
+    types: [opened]
 
 jobs:
   stale:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v4
       - name: Mark stale issues
-        uses: actions/stale@v10
+        uses: actions/stale@v9
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           days-before-stale: 60
           days-before-close: 14
           stale-issue-message: 'This issue has been marked as stale because it has not had recent activity.'
+  labeler:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply labels
+        uses: actions/labeler@v5
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}

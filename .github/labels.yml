@@ -1,0 +1,94 @@
+# GitHub Labels Configuration for KothaGPT AI Projects
+
+# Priority labels
+- name: "priority: critical"
+  color: "b60205"
+  description: "Critical priority issues that need immediate attention"
+
+- name: "priority: high"
+  color: "d93f0b"
+  description: "High priority issues"
+
+- name: "priority: medium"
+  color: "fbca04"
+  description: "Medium priority issues"
+
+- name: "priority: low"
+  color: "0e8a16"
+  description: "Low priority issues"
+
+# Type labels
+- name: "type: bug"
+  color: "d73a49"
+  description: "Something isn't working"
+
+- name: "type: feature"
+  color: "a2eeef"
+  description: "New feature or request"
+
+- name: "type: enhancement"
+  color: "84cc16"
+  description: "Improvement to existing functionality"
+
+- name: "type: documentation"
+  color: "0075ca"
+  description: "Improvements or additions to documentation"
+
+- name: "type: performance"
+  color: "fbca04"
+  description: "Performance-related issues"
+
+- name: "type: security"
+  color: "b60205"
+  description: "Security-related issues"
+
+# AI-specific labels
+- name: "ai: model"
+  color: "5319e7"
+  description: "Issues related to AI models"
+
+- name: "ai: training"
+  color: "fbca04"
+  description: "Issues related to model training"
+
+- name: "ai: inference"
+  color: "0e8a16"
+  description: "Issues related to model inference"
+
+- name: "ai: data"
+  color: "84cc16"
+  description: "Issues related to datasets or data processing"
+
+- name: "ai: api"
+  color: "a2eeef"
+  description: "Issues related to API integrations"
+
+# Status labels
+- name: "status: blocked"
+  color: "b60205"
+  description: "Issue is blocked by another issue"
+
+- name: "status: in-progress"
+  color: "fbca04"
+  description: "Issue is currently being worked on"
+
+- name: "status: review-needed"
+  color: "0e8a16"
+  description: "Issue needs review"
+
+- name: "status: on-hold"
+  color: "d4c5f9"
+  description: "Issue is on hold"
+
+# Community labels
+- name: "good first issue"
+  color: "7057ff"
+  description: "Good for newcomers"
+
+- name: "help wanted"
+  color: "008672"
+  description: "Extra attention is needed"
+
+- name: "question"
+  color: "d876e3"
+  description: "Further information is requested"

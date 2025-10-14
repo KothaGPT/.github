@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Sync from upstream
-        uses: repo-sync/github-action@v2
+        uses: tgymnich/fork-sync@v2.0
         with:
           source_repo: 'KothaGPT/REFERENCE-REPO'
           source_branch: 'main'

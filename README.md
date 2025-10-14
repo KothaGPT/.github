@@ -1,6 +1,16 @@
 # KothaGPT — Organization-level GitHub configuration
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/)
+[![CI Status](https://github.com/KothaGPT/.github/workflows/ci.yml/badge.svg)](https://github.com/KothaGPT/.github/actions)
+
 This repository contains recommended org-level GitHub configuration for KothaGPT. Drop these files into https://github.com/KothaGPT/.github (or upload via the web UI / gh CLI) to centralize templates and workflows across the organization.
+
+## 🌟 About KothaGPT
+
+KothaGPT is an open-source organization dedicated to advancing conversational AI through collaborative development. We build tools, models, and APIs that make AI more accessible and powerful for everyone.
+
+[View our Organization Profile README →](profile/README.md)
 
 ## What's included (quick index)
 
@@ -73,3 +83,7 @@ Each repository can override these organization defaults by:
 - Team names in CODEOWNERS assume GitHub teams are already created
 - Terraform example requires GITHUB_TOKEN variable setup
 - Repository-level overrides can customize these org defaults
+
+---
+
+*This configuration is maintained by the KothaGPT core team. For questions or suggestions, please [open an issue](https://github.com/KothaGPT/.github/issues) or [start a discussion](https://github.com/KothaGPT/.github/discussions).*"
