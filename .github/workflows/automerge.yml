@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     if: contains(github.event.pull_request.labels.*.name, 'auto-merge')
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Auto merge
         uses: pascalgn/automerge-action@v0.16.4
         with:
