@@ -13,4 +13,4 @@ jobs:
         uses: pascalgn/automerge-action@v0.15.3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-Notes: ensure branch protection allows auto-merge and that required status checks match.
+      # Notes: ensure branch protection allows auto-merge and that required status checks match.

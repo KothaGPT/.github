@@ -12,4 +12,4 @@ updates:
       interval: "weekly"
     labels:
       - "dependencies"
-Notes: add additional ecosystems per repo (pip, maven, etc.) or override at repo-level.
+# Notes: add additional ecosystems per repo (pip, maven, etc.) or override at repo-level.

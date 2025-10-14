@@ -15,4 +15,4 @@ jobs:
           source_branch: 'main'
           destination_branch: 'main'
           github_token: ${{ secrets.GITHUB_TOKEN }}
-Alternative: Use actions/upstream-sync or aormsby/Fork-Sync-With-Upstream-action from the Marketplace depending on preference.
+      # Alternative: Use actions/upstream-sync or aormsby/Fork-Sync-With-Upstream-action from the Marketplace depending on preference.
