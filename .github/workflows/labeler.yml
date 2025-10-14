@@ -17,14 +17,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Apply labels based on content
-        uses: actions/labeler@v5
-        with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          configuration-path: .github/labels.yml
-
-      - name: Apply AI-specific labels
-        uses: actions/github-script@v7
+      - name: Apply AI-specific labels based on content
+        uses: actions/github-script@v8
         with:
           script: |
             const body = context.payload.issue?.body || context.payload.pull_request?.body || '';
@@ -55,5 +49,19 @@ jobs:
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 labels: ['type: performance']
+              });
+            }
+
+            const bugKeywords = ['bug', 'error', 'fix', 'issue', 'problem'];
+            const hasBugKeywords = bugKeywords.some(keyword =>
+              body.toLowerCase().includes(keyword) || title.toLowerCase().includes(keyword)
+            );
+
+            if (hasBugKeywords) {
+              github.rest.issues.addLabels({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                labels: ['type: bug']
               });
             }
