@@ -46,9 +46,3 @@ jobs:
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
-
-      - name: Run Security Lint
-        uses: securecodewarrior/github-action-sast@master
-        with:
-          config_path: '.github/security-config.yml'
-        continue-on-error: true
