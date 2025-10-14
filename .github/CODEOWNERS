@@ -1,0 +1,6 @@
+# Default owners for all repos in the org
+* @KothaGPT/core-maintainers @KothaGPT/maintainers
+
+# Docs
+/docs/ @KothaGPT/docs-team
+Notes: put teams (not personal usernames) where possible.

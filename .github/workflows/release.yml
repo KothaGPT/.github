@@ -1,0 +1,16 @@
+name: Release
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: ''
+This is a tiny starter; replace with your preferred release tooling (semantic-release, release-drafter, or custom scripts).

@@ -1,0 +1,15 @@
+name: Auto Merge
+on:
+  pull_request_target:
+    types: [labeled]
+
+jobs:
+  merge_when_ready:
+    runs-on: ubuntu-latest
+    if: contains(github.event.pull_request.labels.*.name, 'auto-merge')
+    steps:
+      - uses: actions/checkout@v4
+      - name: Auto merge
+        uses: pascalgn/automerge-action@v0.15.3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}

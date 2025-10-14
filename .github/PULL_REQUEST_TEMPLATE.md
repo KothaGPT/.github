@@ -1,20 +1,17 @@
 ## Summary
-Short description of the change.
+What does this PR do? Provide a one-paragraph summary.
 
-## Related issue
-Closes # (issue number)
+## Related issues
+- Closes #<issue-number>
 
-## Type of change
-- [ ] Bug fix
-- [ ] New feature
-- [ ] Breaking change
-- [ ] Documentation update
-
-## Checklist
-- [ ] I have read the contributing guidelines
-- [ ] I added tests where applicable
-- [ ] All CI checks pass
-- [ ] I added necessary documentation
+## Implementation notes
+Short summary of the approach and any important design decisions.
 
 ## How to test
-Provide steps to validate the change.
+Steps to reproduce/test; include commands and expected output.
+
+## Checklist
+- [ ] Tests added/updated
+- [ ] Documentation updated
+- [ ] Code follows style guidelines
+- [ ] CHANGELOG updated (if applicable)
