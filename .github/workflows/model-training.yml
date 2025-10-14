@@ -1,0 +1,80 @@
+name: AI Model Training
+
+on:
+  workflow_dispatch:
+    inputs:
+      model_type:
+        description: 'Type of model to train'
+        required: true
+        default: 'gpt'
+        type: choice
+        options:
+          - gpt
+          - bert
+          - custom
+      dataset:
+        description: 'Dataset to use for training'
+        required: true
+        default: 'wikipedia'
+      epochs:
+        description: 'Number of training epochs'
+        required: false
+        default: '3'
+        type: string
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  train:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install training dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install torch transformers datasets accelerate wandb
+
+      - name: Setup Hugging Face
+        run: |
+          echo "HF_TOKEN=${{ secrets.HF_TOKEN }}" >> $GITHUB_ENV
+          python -c "import huggingface_hub; huggingface_hub.login(token='${{ secrets.HF_TOKEN }}')"
+
+      - name: Prepare dataset
+        run: |
+          python scripts/prepare_dataset.py --dataset ${{ github.event.inputs.dataset }}
+
+      - name: Train model
+        run: |
+          python scripts/train_model.py \
+            --model_type ${{ github.event.inputs.model_type }} \
+            --dataset ${{ github.event.inputs.dataset }} \
+            --epochs ${{ github.event.inputs.epochs }} \
+            --output_dir model_output
+
+      - name: Evaluate model
+        run: |
+          python scripts/evaluate_model.py --model_path model_output
+
+      - name: Upload model to Hugging Face
+        if: success()
+        run: |
+          python scripts/upload_model.py --model_path model_output --repo_name "kothagpt-${{ github.event.inputs.model_type }}"
+
+      - name: Create model card
+        run: |
+          python scripts/create_model_card.py --model_path model_output --output model_card.md
+
+      - name: Upload model card
+        uses: actions/upload-artifact@v4
+        with:
+          name: model-card
+          path: model_card.md

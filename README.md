@@ -18,12 +18,17 @@ KothaGPT is an open-source organization dedicated to advancing conversational AI
 - `.github/PULL_REQUEST_TEMPLATE.md` — PR template
 - `.github/CONTRIBUTING.md` — contributor guide + code of conduct hooks
 - `.github/WORKFLOWS/` — GitHub Actions workflows:
-  - `ci.yml` — CI (matrix tests + lint)
+  - `ci.yml` — AI-optimized CI (matrix tests + lint + model validation)
   - `release.yml` — releases and semantic tagging
   - `dependabot-updater.yml` — keep actions & infra up-to-date
-  - `fork-sync.yml` — sync forks/branches from upstream (for community forks)
+  - `fork-sync.yml` — sync forks/branches from upstream
   - `automerge.yml` — auto-merge PRs when checks pass
   - `repo-maintenance.yml` — scheduled housekeeping (stale, labeler)
+  - `security.yml` — vulnerability scanning and CodeQL analysis
+  - `deploy.yml` — automated deployment to cloud
+  - `model-training.yml` — AI model training and validation
+  - `ai-review.yml` — automated AI-powered code review
+  - `monitoring.yml` — AI model performance monitoring and alerting
 - `.github/dependabot.yml` — Dependabot config for deps & github actions
 - `.github/CODEOWNERS` — default ownership rules
 - `.github/SECURITY.md` — security policy / disclosure procedure
@@ -35,19 +40,28 @@ KothaGPT is an open-source organization dedicated to advancing conversational AI
 .github/
 ├─ ISSUE_TEMPLATE/
 │  ├─ bug_report.md
-│  └─ feature_request.md
+│  ├─ feature_request.md
+│  ├─ documentation.md
+│  ├─ performance.md
+│  └─ ai_model.md
 ├─ workflows/
 │  ├─ ci.yml
 │  ├─ release.yml
 │  ├─ dependabot-updater.yml
 │  ├─ fork-sync.yml
 │  ├─ automerge.yml
-│  └─ repo-maintenance.yml
+│  ├─ repo-maintenance.yml
+│  ├─ security.yml
+│  ├─ deploy.yml
+│  ├─ model-training.yml
+│  ├─ ai-review.yml
+│  └─ monitoring.yml
 ├─ PULL_REQUEST_TEMPLATE.md
 ├─ CONTRIBUTING.md
 ├─ CODEOWNERS
 ├─ dependabot.yml
 ├─ SECURITY.md
+├─ labels.yml
 └─ terraform/
    └─ org-settings.tf
 ```
