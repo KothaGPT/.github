@@ -19,19 +19,33 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Check for Python project files
+        id: check-files
+        run: |
+          if [ -f requirements.txt ] || [ -f pyproject.toml ] || [ -f setup.py ] || find . -name "*.py" -type f | head -1 | grep -q .; then
+            echo "Python project detected"
+            echo "run_tests=true" >> $GITHUB_OUTPUT
+          else
+            echo "No Python project files found, skipping tests"
+            echo "run_tests=false" >> $GITHUB_OUTPUT
+          fi
+
       - name: Setup Python ${{ matrix.python-version }}
+        if: steps.check-files.outputs.run_tests == 'true'
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
           cache: 'pip'
 
       - name: Install AI dependencies
+        if: steps.check-files.outputs.run_tests == 'true'
         run: |
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then python -m pip install -r requirements.txt; fi
           python -m pip install black flake8 pytest torch transformers datasets
 
       - name: Cache models
+        if: steps.check-files.outputs.run_tests == 'true'
         uses: actions/cache@v4
         with:
           path: ~/.cache/huggingface
@@ -40,15 +54,19 @@ jobs:
             ${{ runner.os }}-models-
 
       - name: Lint with black
+        if: steps.check-files.outputs.run_tests == 'true'
         run: black --check --diff .
 
       - name: Lint with flake8
+        if: steps.check-files.outputs.run_tests == 'true'
         run: flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
 
       - name: Run unit tests
+        if: steps.check-files.outputs.run_tests == 'true'
         run: python -m pytest -q
 
       - name: Validate model configurations
+        if: steps.check-files.outputs.run_tests == 'true'
         run: |
           # Add custom validation for AI models
           python -c "
@@ -63,6 +81,7 @@ jobs:
           "
 
       - name: Check for large files (models/data)
+        if: steps.check-files.outputs.run_tests == 'true'
         run: |
           # Warn if large files are being committed
           large_files=$(find . -type f -size +50M -not -path "./.git/*")
@@ -70,3 +89,8 @@ jobs:
             echo "Warning: Large files detected:"
             echo "$large_files"
           fi
+
+      - name: Skip CI for non-Python projects
+        if: steps.check-files.outputs.run_tests == 'false'
+        run: |
+          echo "This repository does not appear to be a Python project. CI checks skipped."
