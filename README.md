@@ -29,12 +29,42 @@ KothaGPT is an open-source organization dedicated to advancing conversational AI
   - `model-training.yml` — AI model training and validation
   - `ai-review.yml` — automated AI-powered code review
   - `monitoring.yml` — AI model performance monitoring and alerting
-- `.github/dependabot.yml` — Dependabot config for deps & github actions
-- `.github/CODEOWNERS` — default ownership rules
-- `.github/SECURITY.md` — security policy / disclosure procedure
-- `terraform/` — starter terraform examples to manage org settings
+- `.github/requirements.txt` — Core dependencies (monitoring only)
+- `.github/requirements-monitoring.txt` — Monitoring-specific dependencies
+- `requirements.txt` — Core dependencies for monitoring workflows
+- `requirements-monitoring.txt` — Lightweight monitoring dependencies only
+- `requirements-training.txt` — Heavy ML training dependencies (optional)
 
-## File tree
+## Python Dependencies
+
+The repository includes multiple requirements files for different use cases:
+
+### Monitoring Dependencies
+Install monitoring dependencies for health checks and reporting:
+```bash
+pip install -r requirements-monitoring.txt
+```
+
+**Includes:** requests, prometheus_client
+
+### Full Dependencies
+Install all dependencies including ML training packages:
+```bash
+pip install -r requirements.txt
+```
+
+**Includes:** All monitoring dependencies plus torch, transformers, datasets, etc.
+
+### Development Setup
+For local development with all features:
+```bash
+# Install all dependencies
+pip install -r requirements.txt
+
+# Or install only what you need
+pip install -r requirements-monitoring.txt  # for monitoring only
+pip install -r requirements-training.txt     # for ML training only
+```
 
 ```
 .github/
@@ -56,12 +86,22 @@ KothaGPT is an open-source organization dedicated to advancing conversational AI
 │  ├─ model-training.yml
 │  ├─ ai-review.yml
 │  └─ monitoring.yml
+├─ scripts/
+│  ├─ README.md
+│  ├─ check_model_health.py
+│  ├─ generate_report.py
+│  ├─ monitoring_config.json
+│  ├─ benchmark_models.py (coming soon)
+│  ├─ detect_drift.py (coming soon)
+│  └─ create_model_card.py (coming soon)
 ├─ PULL_REQUEST_TEMPLATE.md
 ├─ CONTRIBUTING.md
 ├─ CODEOWNERS
 ├─ dependabot.yml
 ├─ SECURITY.md
-├─ labels.yml
+├─ requirements.txt
+├─ requirements-monitoring.txt
+├─ requirements-training.txt
 └─ terraform/
    └─ org-settings.tf
 ```

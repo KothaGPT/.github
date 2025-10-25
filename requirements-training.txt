@@ -1,0 +1,7 @@
+# ML Training dependencies
+torch>=2.0.0
+transformers>=4.21.0
+datasets>=2.4.0
+accelerate>=0.20.0
+wandb>=0.15.0
+huggingface_hub>=0.15.0

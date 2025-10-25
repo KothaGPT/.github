@@ -41,7 +41,7 @@ jobs:
       - name: Install training dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install torch transformers datasets accelerate wandb
+          python -m pip install -r requirements-training.txt
 
       - name: Setup Hugging Face
         run: |
