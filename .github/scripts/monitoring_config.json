@@ -1,0 +1,25 @@
+{
+  "model_endpoints": [
+    "http://localhost:8000/predict"
+  ],
+  "github_pages_endpoints": [
+    "https://kothagpt.github.io/",
+    "https://kothagpt.github.io/.github/"
+  ],
+  "github_api_endpoints": [
+    "https://api.github.com/repos/KothaGPT/.github",
+    "https://api.github.com/repos/KothaGPT/.github/pages"
+  ],
+  "expected_response_time": 2.0,
+  "max_error_rate": 0.05,
+  "test_queries": [
+    "Hello, how are you?",
+    "What is the capital of France?",
+    "Explain quantum computing in simple terms.",
+    "Write a haiku about artificial intelligence."
+  ],
+  "api_keys": {
+    "https://api.github.com/repos/KothaGPT/.github": "${{ secrets.GITHUB_TOKEN }}"
+  },
+  "timeout": 30
+}
